@@ -132,5 +132,13 @@ NumericVector  price(Rprice);
     return(X)
   }
   
+  MCE=c();MCVA=c();MCK=c()
+  for(i in 1:50){
+    MCE[i]=mean(tmcs1[i,])
+    MCVA[i]=var(tmcs1[i,])
+    MCK[i]=mean((tmcs1[i,]-MCE[i])^4)
+  }
+  tMCm2$K=MCK
+  
   
   

@@ -143,8 +143,17 @@ p1<-ggplot(data=k,aes(x=Maximum_Drawdown,y=Sharpe_Ratio,color=factor(Cost_functi
 p1
 k
 
+length(S[,9])
+x1<-as.numeric(c(M[,9],S[,9]))
+x2<-as.numeric(c(M[,8],S[,8]))
+x3=c(rep('Mean-Variance',13),rep('Risk-Sensitive',10))
 
-
+k<-data.frame(x1,x2,x3)
+colnames(k) <- c("Volatility", "Return","Cost_function")
+k
+p1<-ggplot(data=k,aes(x=Volatility,y=Return,color=factor(Cost_function)))+geom_point()+ stat_smooth()
+p1
+k
 plot(0:36,port.simM3(5,0,1000)[,1],type='l',ylim=c(0.9,1.4))
 for(i in 1:9){
   lines(0:36,port.simM3(5,0,1000)[,i+1],col=i+1)
@@ -165,3 +174,7 @@ density(rghyp(100000,best[[2]])
         x=data.frame(x,distribution)
 pd<-ggplot(data=x,aes(x=x,color=distribution))+stat_density(geom='line',position='identity')+coord_cartesian(xlim = c(-0.5, 0.5))
 pd
+
+
+plot(S[,9],S[,8],type='l',ylim=c())
+lines(M[,9],M[,8],type='l')

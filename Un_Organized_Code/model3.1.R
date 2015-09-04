@@ -8,8 +8,8 @@ summary(Black$asset_id)
 riskfree<-c(1.51,1.57,1.65,1.72,1.62,1.78,2.02,1.89,1.87,1.70,2.16,2.52,2.60,2.78,2.64,2.57,2.75,3.04,
             2.67,2.66,2.73,2.67,2.48,2.53,2.58,2.35,2.52,2.35,2.18,2.17,
             1.68,2.00,1.94,2.05,2.12,2.35)
-RF=rep(0,36)
-z <- as.yearmon(1960 + seq(0, 35)/12)
+RF=rep(0,50)
+z <- as.yearmon(1960 + seq(0, 11)/12)
 RF=riskfree/1200
 Rf=data.frame(RF,row.names=as.Date(z))
 mean(RF)
@@ -219,6 +219,8 @@ tMCm2.100<-twwm2(100,best)
 tMCm21$K
 tMCm2$K
 tMCm2.100$K
+
+
 evalbody4<-'
 double gamma = as<double>(Rgamma);
 double lambda = as<double>(Rlambda);
